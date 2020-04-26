@@ -1,7 +1,5 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-  </div>
+  <div class="home"></div>
 </template>
 
 <script>
@@ -9,6 +7,14 @@
 
 export default {
   name: "Home",
-  components: {}
+  components: {},
+  data() {
+    return {};
+  },
+
+  methods: {}
 };
 </script>
+
+<style lang="scss">
+</style>
