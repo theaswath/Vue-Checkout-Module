@@ -1,10 +1,10 @@
 <template>
-  <div class="home">
+  <div class="paymentdetails">
     <el-row :gutter="20 " type="flex">
       <!-- Credit Card Begining -->
       <el-card
-        style="background: linear-gradient(90deg, rgba(0, 114, 255,1) 0%, rgba(0, 92, 204,1) 100%); transition:0.5s ; right: 15%;"
-        :style="[(cardPosition()) ? {'right': '5%'} : {'right': '15%'}]"
+        style="background: linear-gradient(90deg, rgba(0, 114, 255,1) 0%, rgba(0, 92, 204,1) 100%); transition:0.5s ; "
+        :style="[(cardPosition()) ? {'right': '15%'} : {'right': '50%'}]"
         class="credit-card"
         shadow="always"
       >
@@ -83,12 +83,6 @@
       <!-- Warning Dialogue Begin -->
 
       <!-- Checkout Bag Begin-->
-      <el-col :span="16" class="items">
-        <el-card shadow="never" class="items-card">
-          <h1>Checkout</h1>
-        </el-card>
-      </el-col>
-      <!-- Checkout Bag End-->
 
       <!-- Card Details Begin-->
       <el-col :span="6">
@@ -342,10 +336,6 @@ export default {
 </script>
 
 <style lang="scss">
-.items-card {
-  border: none !important;
-}
-
 body {
   background: rgb(243, 243, 243);
 }
@@ -374,8 +364,8 @@ hr {
 .warning {
   position: absolute;
   z-index: 20;
-  top: 18%;
-  right: 5%;
+  top: 20%;
+  right: 20%;
   font-size: 1.5em;
   text-align: center;
   border: none !important;

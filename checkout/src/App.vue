@@ -1,7 +1,12 @@
-
 <template >
   <div id="app">
     <el-container class="ht-100 alignCenter">
+      <router-link to="/">
+        <el-button>ReviewCart</el-button>
+      </router-link>
+      <router-link to="/PaymentDetails">
+        <el-button>PaymentDeatils</el-button>
+      </router-link>
       <el-row type="flex">
         <el-card shadow="always" class="bg-card">
           <el-row>
@@ -18,7 +23,15 @@
             </el-steps>
           </el-row>
           <hr />
-          <router-view></router-view>
+          <el-col :span="16" class="items">
+            <el-card shadow="never" class="items-card">
+              <h1>Checkout</h1>
+            </el-card>
+          </el-col>
+          <!-- Checkout Bag End-->
+          <transition name="nextStep">
+            <router-view></router-view>
+          </transition>
         </el-card>
       </el-row>
     </el-container>
@@ -26,20 +39,25 @@
 </template>
 
 <script>
-// import PaymentDetails from "./views/PaymentDetails.vue";
 export default {
   name: "app",
   data() {
     return {};
   },
-  components: {
-    // PaymentDetails
-  },
+  components: {},
 
   methods: {
     activeStepFn() {
-      if (this.$router.currentRoute.name == "PaymentDetails") {
+      if (this.$router.currentRoute.name == "ReviewCart") {
+        return 0;
+      } else if (this.$router.currentRoute.name == "DeliveryPayment") {
         return 1;
+      } else if (this.$router.currentRoute.name == "PaymentDetails") {
+        return 2;
+      } else if (this.$router.currentRoute.name == "OrderConfirmed") {
+        return 3;
+      } else {
+        return 0;
       }
     }
   }
@@ -71,5 +89,43 @@ export default {
 
 .stepsCounter {
   margin-bottom: 20px;
+}
+
+.items-card {
+  border: none !important;
+}
+
+//Animations
+.nextStep-enter-active {
+  animation: coming 0.5s ease-in-out;
+  animation-delay: 0.5s;
+  opacity: 0;
+}
+
+.nextStep-leave-active {
+  animation: going 0.5s ease-in-out;
+  animation-delay: 0.5s;
+}
+
+@keyframes going {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+}
+
+@keyframes coming {
+  from {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 </style>
