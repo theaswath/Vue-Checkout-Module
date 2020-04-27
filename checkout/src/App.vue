@@ -1,8 +1,11 @@
 <template >
   <div id="app">
     <el-container class="ht-100 alignCenter">
-      <router-link to="/">
+      <!-- <router-link to="/">
         <el-button>ReviewCart</el-button>
+      </router-link>-->
+      <router-link to="/DeliveryPayment">
+        <el-button>DeliveryPayment</el-button>
       </router-link>
       <router-link to="/PaymentDetails">
         <el-button>PaymentDeatils</el-button>
@@ -29,7 +32,7 @@
             </el-card>
           </el-col>
           <!-- Checkout Bag End-->
-          <transition name="nextStep">
+          <transition name="nextStep" mode="out-in">
             <router-view></router-view>
           </transition>
         </el-card>
@@ -97,35 +100,35 @@ export default {
 
 //Animations
 .nextStep-enter-active {
-  animation: coming 0.5s ease-in-out;
+  animation: next-step 0.5s ease-out;
   animation-delay: 0.5s;
   opacity: 0;
 }
 
 .nextStep-leave-active {
-  animation: going 0.5s ease-in-out;
+  animation: prev-step 0.5s ease-out;
   animation-delay: 0.5s;
 }
 
-@keyframes going {
+@keyframes next-step {
   from {
-    transform: translateX(0);
-    opacity: 1;
+    transform: translateX(15em);
+    opacity: 0;
   }
   to {
-    transform: translateX(-100px);
-    opacity: 0;
+    transform: translateX(0);
+    opacity: 1;
   }
 }
 
-@keyframes coming {
+@keyframes prev-step {
   from {
-    transform: translateX(100px);
-    opacity: 0;
-  }
-  to {
     transform: translateX(0);
     opacity: 1;
+  }
+  to {
+    transform: translateX(-15em);
+    opacity: 0;
   }
 }
 </style>

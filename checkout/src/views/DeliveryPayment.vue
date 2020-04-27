@@ -1,5 +1,5 @@
 <template>
-  <div class="paymentdetails">
+  <div class="deliverydayment">
     <el-row :gutter="20 " type="flex">
       <!-- Credit Card Begining -->
       <el-card
@@ -15,7 +15,7 @@
         >
           <el-col :offset="16" :span="6">
             <img
-              :src="getCardType($store.card_details.card_number.pt1[0])"
+              :src="getCardType(card_details.card_number.pt1[0])"
               alt
               height="60em"
               width="auto"
@@ -26,19 +26,19 @@
         </el-row>
         <el-row type="flex" justify="center" style="top:1em; transition:0.5s">
           <el-col :span="4">
-            <p>{{$store.card_details.card_number.pt1}}</p>
+            <p>{{card_details.card_number.pt1}}</p>
           </el-col>
           <el-col :span="2"></el-col>
           <el-col :span="4">
-            <p>{{$store.card_details.card_number.pt2}}</p>
+            <p>{{card_details.card_number.pt2}}</p>
           </el-col>
           <el-col :span="2"></el-col>
           <el-col :span="4">
-            <p>{{$store.card_details.card_number.pt3}}</p>
+            <p>{{card_details.card_number.pt3}}</p>
           </el-col>
           <el-col :span="2"></el-col>
           <el-col :span="4">
-            <p>{{$store.card_details.card_number.pt4}}</p>
+            <p>{{card_details.card_number.pt4}}</p>
           </el-col>
         </el-row>
         <el-row
@@ -48,15 +48,15 @@
         >
           <el-col :span="1"></el-col>
           <el-col :span="18">
-            <p>{{$store.card_details.name}}</p>
+            <p>{{card_details.name}}</p>
           </el-col>
 
           <el-col :span="2"></el-col>
           <el-col :span="2">
-            <p>{{$store.card_details.mm}}</p>
+            <p>{{card_details.mm}}</p>
           </el-col>
           <el-col :span="2">
-            <p>{{$store.card_details.yy}}</p>
+            <p>{{card_details.yy}}</p>
           </el-col>
           <el-col :span="1"></el-col>
         </el-row>
@@ -66,16 +66,16 @@
       <!-- Warning Dialogue Begin -->
 
       <el-card class="warning" shadow="never" style="background: none; text-align:center; ">
-        <i v-show="$store.cardValid" class="el-icon-warning-outline"></i>
+        <i v-show="cardValid" class="el-icon-warning-outline"></i>
 
-        <i v-show="!$store.cardValid" class="el-icon-circle-close" style="color:red"></i>
+        <i v-show="!cardValid" class="el-icon-circle-close" style="color:red"></i>
 
-        <h3 v-show="$store.cardValid">
+        <h3 v-show="cardValid">
           Details
           <br />Incomplete
         </h3>
 
-        <h3 v-show="!$store.cardValid" style="color:red">
+        <h3 v-show="!cardValid" style="color:red">
           Unaccepted
           <br />Card Type
         </h3>
@@ -93,7 +93,7 @@
         >
           <h2>Card Details</h2>
           <div style="height:14em"></div>
-          <el-form :model="$store.card_details">
+          <el-form :model="card_details">
             <!-- Card Number Begin -->
             <el-row style="padding: 0px !important;
   margin: 0px !important; ">
@@ -109,28 +109,28 @@
               <el-row style=" border:none; text-align:center" type="flex" justify="center">
                 <el-col :span="5">
                   <el-input
-                    v-model="$store.card_details.card_number.pt1"
+                    v-model="card_details.card_number.pt1"
                     maxlength="4"
                     placeholder="XXXX"
-                    :style="[($store.card_details.card_number.pt1.length == 4) ? {'border-bottom': '1px solid rgba(255, 255, 255, 1) !important', 'transition':'0.3s'} :  {'border-bottom': '1px solid rgba(255, 255, 255, 0.5) !important', 'transition':'0.3s'}]"
+                    :style="[(card_details.card_number.pt1.length == 4) ? {'border-bottom': '1px solid rgba(255, 255, 255, 1) !important', 'transition':'0.3s'} :  {'border-bottom': '1px solid rgba(255, 255, 255, 0.5) !important', 'transition':'0.3s'}]"
                     style="width: 5em !important; text-align: center;"
                   ></el-input>
                 </el-col>
                 <el-col :span="1"></el-col>
                 <el-col :span="5">
                   <el-input
-                    v-model="$store.card_details.card_number.pt2"
+                    v-model="card_details.card_number.pt2"
                     maxlength="4"
                     placeholder="XXXX"
-                    :style="[($store.card_details.card_number.pt2.length == 4) ? {'border-bottom': '1px solid rgba(255, 255, 255, 1) !important', 'transition':'0.3s'} :  {'border-bottom': '1px solid rgba(255, 255, 255, 0.5) !important', 'transition':'0.3s'}]"
+                    :style="[(card_details.card_number.pt2.length == 4) ? {'border-bottom': '1px solid rgba(255, 255, 255, 1) !important', 'transition':'0.3s'} :  {'border-bottom': '1px solid rgba(255, 255, 255, 0.5) !important', 'transition':'0.3s'}]"
                     style="width: 5em !important; text-align: center;"
                   ></el-input>
                 </el-col>
                 <el-col :span="1"></el-col>
                 <el-col :span="5">
                   <el-input
-                    v-model="$store.card_details.card_number.pt3"
-                    :style="[($store.card_details.card_number.pt3.length == 4) ? {'border-bottom': '1px solid rgba(255, 255, 255, 1) !important', 'transition':'0.3s'} :  {'border-bottom': '1px solid rgba(255, 255, 255, 0.5) !important', 'transition':'0.3s'}]"
+                    v-model="card_details.card_number.pt3"
+                    :style="[(card_details.card_number.pt3.length == 4) ? {'border-bottom': '1px solid rgba(255, 255, 255, 1) !important', 'transition':'0.3s'} :  {'border-bottom': '1px solid rgba(255, 255, 255, 0.5) !important', 'transition':'0.3s'}]"
                     maxlength="4"
                     placeholder="XXXX"
                     style="width: 5em !important; text-align: center;"
@@ -139,10 +139,10 @@
                 <el-col :span="1"></el-col>
                 <el-col :span="5">
                   <el-input
-                    v-model="$store.card_details.card_number.pt4"
+                    v-model="card_details.card_number.pt4"
                     maxlength="4"
                     placeholder="XXXX"
-                    :style="[($store.card_details.card_number.pt4.length == 4) ? {'border-bottom': '1px solid rgba(255, 255, 255, 1) !important', 'transition':'0.3s'} :  {'border-bottom': '1px solid rgba(255, 255, 255, 0.5) !important', 'transition':'0.3s'}]"
+                    :style="[(card_details.card_number.pt4.length == 4) ? {'border-bottom': '1px solid rgba(255, 255, 255, 1) !important', 'transition':'0.3s'} :  {'border-bottom': '1px solid rgba(255, 255, 255, 0.5) !important', 'transition':'0.3s'}]"
                     style="width: 5em !important; text-align: center;"
                   ></el-input>
                 </el-col>
@@ -164,9 +164,9 @@
               <el-row style=" border:none; text-align:left; " type="flex" justify="start">
                 <el-col :span="22">
                   <el-input
-                    v-model="$store.card_details.name"
+                    v-model="card_details.name"
                     maxlength="22"
-                    :style="[($store.card_details.name.length == 0) ? {'border-bottom': '1px solid rgba(255, 255, 255, 0.5) !important', 'transition':'0.3s'} :  {'border-bottom': '1px solid rgba(255, 255, 255, 1) !important', 'transition':'0.3s'}]"
+                    :style="[(card_details.name.length == 0) ? {'border-bottom': '1px solid rgba(255, 255, 255, 0.5) !important', 'transition':'0.3s'} :  {'border-bottom': '1px solid rgba(255, 255, 255, 1) !important', 'transition':'0.3s'}]"
                   ></el-input>
                 </el-col>
               </el-row>
@@ -191,20 +191,20 @@
                 <el-form-item style="margin-bottom:1px">
                   <el-col :span="8">
                     <el-input
-                      v-model="$store.card_details.mm"
+                      v-model="card_details.mm"
                       maxlength="2"
                       placeholder="MM"
-                      :style="[($store.card_details.card_number.pt1.length == 4) ? {'border-bottom': '1px solid rgba(255, 255, 255, 1) !important', 'transition':'0.3s'} :  {'border-bottom': '1px solid rgba(255, 255, 255, 0.5) !important', 'transition':'0.3s'}]"
+                      :style="[(card_details.card_number.pt1.length == 4) ? {'border-bottom': '1px solid rgba(255, 255, 255, 1) !important', 'transition':'0.3s'} :  {'border-bottom': '1px solid rgba(255, 255, 255, 0.5) !important', 'transition':'0.3s'}]"
                       style="width: 4em !important; text-align: center;"
                     ></el-input>
                   </el-col>
                   <el-col :span="8"></el-col>
                   <el-col :span="8">
                     <el-input
-                      v-model="$store.card_details.yy"
+                      v-model="card_details.yy"
                       maxlength="2"
                       placeholder="YY"
-                      :style="[($store.card_details.card_number.pt1.length == 4) ? {'border-bottom': '1px solid rgba(255, 255, 255, 1) !important', 'transition':'0.3s'} :  {'border-bottom': '1px solid rgba(255, 255, 255, 0.5) !important', 'transition':'0.3s'}]"
+                      :style="[(card_details.card_number.pt1.length == 4) ? {'border-bottom': '1px solid rgba(255, 255, 255, 1) !important', 'transition':'0.3s'} :  {'border-bottom': '1px solid rgba(255, 255, 255, 0.5) !important', 'transition':'0.3s'}]"
                       style="width: 4em !important; text-align: center;"
                     ></el-input>
                   </el-col>
@@ -224,11 +224,11 @@
                 <el-form-item style="margin-bottom:1px">
                   <el-col :span="8">
                     <el-input
-                      v-model="$store.card_details.cvv"
+                      v-model="card_details.cvv"
                       maxlength="3"
                       placeholder="CVV"
                       type="password"
-                      :style="[($store.card_details.card_number.pt1.length == 4) ? {'border-bottom': '1px solid rgba(255, 255, 255, 1) !important', 'transition':'0.3s'} :  {'border-bottom': '1px solid rgba(255, 255, 255, 0.5) !important', 'transition':'0.3s'}]"
+                      :style="[(card_details.card_number.pt1.length == 4) ? {'border-bottom': '1px solid rgba(255, 255, 255, 1) !important', 'transition':'0.3s'} :  {'border-bottom': '1px solid rgba(255, 255, 255, 0.5) !important', 'transition':'0.3s'}]"
                       style="width: 5em !important; text-align: center;"
                     ></el-input>
                   </el-col>
@@ -237,12 +237,12 @@
             </el-row>
             <!-- Card Holder Name End -->
             <el-row type="flex" justify="end" style="margin:30px 0.5em; transition: 0.5s;">
-              <el-button v-show="!$store.checkoutBtn" disabled>
+              <el-button v-show="!checkoutBtn" disabled>
                 Complete Checkout
                 <i class="el-icon-right"></i>
               </el-button>
 
-              <el-button v-show="$store.checkoutBtn">
+              <el-button v-show="checkoutBtn">
                 Complete Checkout
                 <i class="el-icon-right"></i>
               </el-button>
@@ -259,56 +259,75 @@
 // @ is an alias to /src
 
 export default {
-  name: "PaymentDetails",
+  name: "DeliveryPayment",
   components: {},
   data() {
-    return {};
+    return {
+      checkoutBtn: false,
+
+      cardProceed: false,
+
+      cardValid: true,
+
+      card_details: {
+        card_number: {
+          pt1: "",
+          pt2: "",
+          pt3: "",
+          pt4: ""
+        },
+        name: "",
+        mm: "",
+        yy: "",
+        cvv: ""
+      }
+    };
   },
 
   methods: {
     getCardType(card) {
       if (card == undefined) {
-        this.$store.cardValid = true;
+        this.cardValid = true;
         return require("../assets/img/misc.svg");
       } else if (card == 3) {
-        this.$store.cardValid = true;
+        this.cardValid = true;
         return require("../assets/img/amex.svg");
       } else if (card == 4) {
-        this.$store.cardValid = true;
+        this.cardValid = true;
         return require("../assets/img/visa.svg");
       } else if (card == 5) {
-        this.$store.cardValid = true;
+        this.cardValid = true;
         return require("../assets/img/mastercard.svg");
       } else if (card == 6) {
-        this.$store.cardValid = true;
+        this.cardValid = true;
         return require("../assets/img/rupay.svg"); //change to discover if outside India,
       } else {
-        this.$store.cardValid = false;
+        this.cardValid = false;
         return require("../assets/img/misc.svg"); //spacer using blank svg
       }
     },
 
     cardPosition() {
       if (
-        this.$store.card_details.card_number.pt1.length == 4 &&
-        this.$store.card_details.card_number.pt2.length == 4 &&
-        this.$store.card_details.card_number.pt3.length == 4 &&
-        this.$store.card_details.card_number.pt4.length == 4 &&
-        this.$store.card_details.name.length > 2 &&
-        this.$store.card_details.mm.length == 2 &&
-        this.$store.card_details.yy.length == 2 &&
-        this.$store.card_details.mm > 0 &&
-        this.$store.card_details.mm < 13 &&
-        this.$store.card_details.yy > 0 &&
-        this.$store.card_details.cvv.length == 3 &&
-        this.$store.cardValid == true
+        this.card_details.card_number.pt1.length == 4 &&
+        this.card_details.card_number.pt2.length == 4 &&
+        this.card_details.card_number.pt3.length == 4 &&
+        this.card_details.card_number.pt4.length == 4 &&
+        this.card_details.name.length > 2 &&
+        this.card_details.mm.length == 2 &&
+        this.card_details.yy.length == 2 &&
+        this.card_details.mm > 0 &&
+        this.card_details.mm < 13 &&
+        this.card_details.yy > 0 &&
+        this.card_details.cvv.length == 3 &&
+        this.cardValid == true
       ) {
-        this.$store.cardProceed = true;
-        this.$store.checkoutBtn = true;
+        this.cardProceed = true;
+        this.checkoutBtn = true;
         return true;
       } else {
-        this.$store.cardProceed = false;
-        this.$store.checkoutBtn = false;
+        this.cardProceed = false;
+        this.checkoutBtn = false;
         return false;
       }
     }

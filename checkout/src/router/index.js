@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import ReviewCart from "../views/ReviewCart.vue";
 import PaymentDetails from "../views/PaymentDetails.vue";
+import DeliveryPayment from "../views/DeliveryPayment.vue";
 
 Vue.use(VueRouter);
 
@@ -16,6 +17,12 @@ const routes = [
     path: "/PaymentDetails",
     name: "PaymentDetails",
     component: PaymentDetails,
+  },
+
+  {
+    path: "/DeliveryPayment",
+    name: "DeliveryPayment",
+    component: DeliveryPayment,
   },
   //{
   // path:
