@@ -259,7 +259,7 @@
 // @ is an alias to /src
 
 export default {
-  name: "DeliveryPayment",
+  name: "DeliveryPayment-OLD",
   components: {},
   data() {
     return {

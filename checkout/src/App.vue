@@ -1,15 +1,30 @@
 <template >
   <div id="app">
     <el-container class="ht-100 alignCenter">
-      <!-- <router-link to="/">
-        <el-button>ReviewCart</el-button>
-      </router-link>-->
-      <router-link to="/DeliveryPayment">
-        <el-button>DeliveryPayment</el-button>
+      <!-- Router Buttons Debug Start -->
+
+      <router-link to="/">
+        <el-button>Home</el-button>
       </router-link>
+      <br />
+      <router-link to="/DeliveryDetails">
+        <el-button>Delivery</el-button>
+      </router-link>
+      <br />
       <router-link to="/PaymentDetails">
-        <el-button>PaymentDeatils</el-button>
+        <el-button>Payment</el-button>
       </router-link>
+      <br />
+      <router-link to="ConfirmOrder">
+        <el-button>Confim</el-button>
+      </router-link>
+      <br />
+      <router-link to="OrderConfirmed">
+        <el-button>Confimed</el-button>
+      </router-link>
+      <br />
+      <!-- Router Buttons Debug End -->
+
       <el-row type="flex">
         <el-card shadow="always" class="bg-card">
           <el-row>
@@ -20,17 +35,13 @@
               class="stepsCounter"
             >
               <el-step title="Review Cart"></el-step>
-              <el-step title="Delivery & Payment Options"></el-step>
+              <el-step title="Delivery Details"></el-step>
               <el-step title="Payment Details"></el-step>
               <el-step title="Order Confirmation"></el-step>
             </el-steps>
           </el-row>
           <hr />
-          <el-col :span="16" class="items">
-            <el-card shadow="never" class="items-card">
-              <h1>Checkout</h1>
-            </el-card>
-          </el-col>
+
           <!-- Checkout Bag End-->
           <transition name="nextStep" mode="out-in">
             <router-view></router-view>
@@ -53,12 +64,14 @@ export default {
     activeStepFn() {
       if (this.$router.currentRoute.name == "ReviewCart") {
         return 0;
-      } else if (this.$router.currentRoute.name == "DeliveryPayment") {
+      } else if (this.$router.currentRoute.name == "DeliveryDetails") {
         return 1;
       } else if (this.$router.currentRoute.name == "PaymentDetails") {
         return 2;
-      } else if (this.$router.currentRoute.name == "OrderConfirmed") {
+      } else if (this.$router.currentRoute.name == "ConfirmOrder") {
         return 3;
+      } else if (this.$router.currentRoute.name == "OrderConfirmed") {
+        return 4;
       } else {
         return 0;
       }
@@ -78,6 +91,12 @@ export default {
   font-family: Gilroy-ExtraBold;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+.bg-card {
+  font-family: Gilroy-ExtraBold;
+  height: 85vh;
+  width: 80vw;
+  padding: 20px;
 }
 
 .ht-100 {

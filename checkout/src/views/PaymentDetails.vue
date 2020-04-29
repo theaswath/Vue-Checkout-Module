@@ -46,7 +46,6 @@
           justify="center"
           style="top:4em;  font-size: 0.6em; letter-spacing:0.1em; transition:0.5s"
         >
-          <el-col :span="1"></el-col>
           <el-col :span="18">
             <p>{{$store.card_details.name}}</p>
           </el-col>
@@ -55,8 +54,9 @@
           <el-col :span="2">
             <p>{{$store.card_details.mm}}</p>
           </el-col>
+          <el-col :span="1">/</el-col>
           <el-col :span="2">
-            <p>{{$store.card_details.yy}}</p>
+            <p>20{{$store.card_details.yy}}</p>
           </el-col>
           <el-col :span="1"></el-col>
         </el-row>
@@ -83,7 +83,7 @@
       <!-- Warning Dialogue Begin -->
 
       <!-- Checkout Bag Begin-->
-
+      <!-- Checkout Bag End -->
       <!-- Card Details Begin-->
       <el-col :span="6">
         <el-card
@@ -166,7 +166,7 @@
                   <el-input
                     v-model="$store.card_details.name"
                     maxlength="22"
-                    :style="[($store.card_details.name.length == 0) ? {'border-bottom': '1px solid rgba(255, 255, 255, 0.5) !important', 'transition':'0.3s'} :  {'border-bottom': '1px solid rgba(255, 255, 255, 1) !important', 'transition':'0.3s'}]"
+                    :style="[($store.card_details.name.length > 2) ? {'border-bottom': '1px solid rgba(255, 255, 255, 1) !important', 'transition':'0.3s'} :  {'border-bottom': '1px solid rgba(255, 255, 255, 0.5) !important', 'transition':'0.3s'}]"
                   ></el-input>
                 </el-col>
               </el-row>
@@ -194,7 +194,7 @@
                       v-model="$store.card_details.mm"
                       maxlength="2"
                       placeholder="MM"
-                      :style="[($store.card_details.card_number.pt1.length == 4) ? {'border-bottom': '1px solid rgba(255, 255, 255, 1) !important', 'transition':'0.3s'} :  {'border-bottom': '1px solid rgba(255, 255, 255, 0.5) !important', 'transition':'0.3s'}]"
+                      :style="[($store.card_details.mm.length == 2) ? {'border-bottom': '1px solid rgba(255, 255, 255, 1) !important', 'transition':'0.3s'} :  {'border-bottom': '1px solid rgba(255, 255, 255, 0.5) !important', 'transition':'0.3s'}]"
                       style="width: 4em !important; text-align: center;"
                     ></el-input>
                   </el-col>
@@ -204,7 +204,7 @@
                       v-model="$store.card_details.yy"
                       maxlength="2"
                       placeholder="YY"
-                      :style="[($store.card_details.card_number.pt1.length == 4) ? {'border-bottom': '1px solid rgba(255, 255, 255, 1) !important', 'transition':'0.3s'} :  {'border-bottom': '1px solid rgba(255, 255, 255, 0.5) !important', 'transition':'0.3s'}]"
+                      :style="[($store.card_details.yy.length == 2) ? {'border-bottom': '1px solid rgba(255, 255, 255, 1) !important', 'transition':'0.3s'} :  {'border-bottom': '1px solid rgba(255, 255, 255, 0.5) !important', 'transition':'0.3s'}]"
                       style="width: 4em !important; text-align: center;"
                     ></el-input>
                   </el-col>
@@ -228,7 +228,7 @@
                       maxlength="3"
                       placeholder="CVV"
                       type="password"
-                      :style="[($store.card_details.card_number.pt1.length == 4) ? {'border-bottom': '1px solid rgba(255, 255, 255, 1) !important', 'transition':'0.3s'} :  {'border-bottom': '1px solid rgba(255, 255, 255, 0.5) !important', 'transition':'0.3s'}]"
+                      :style="[($store.card_details.cvv.length == 3) ? {'border-bottom': '1px solid rgba(255, 255, 255, 1) !important', 'transition':'0.3s'} :  {'border-bottom': '1px solid rgba(255, 255, 255, 0.5) !important', 'transition':'0.3s'}]"
                       style="width: 5em !important; text-align: center;"
                     ></el-input>
                   </el-col>
@@ -303,11 +303,9 @@ export default {
         this.$store.card_details.cvv.length == 3 &&
         this.$store.cardValid == true
       ) {
-        this.$store.cardProceed = true;
         this.$store.checkoutBtn = true;
         return true;
       } else {
-        this.$store.cardProceed = false;
         this.$store.checkoutBtn = false;
         return false;
       }
@@ -346,7 +344,7 @@ hr {
   position: absolute;
   z-index: 20;
   top: 20%;
-  right: 20%;
+  right: 15%;
   font-size: 1.5em;
   text-align: center;
   border: none !important;
@@ -358,13 +356,6 @@ hr {
     font-family: Gilroy-Light;
     font-size: 0.7em;
   }
-}
-
-.bg-card {
-  font-family: Gilroy-ExtraBold;
-  height: 85vh;
-  width: 80vw;
-  padding: 20px;
 }
 
 .checkout-card {

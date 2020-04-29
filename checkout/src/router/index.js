@@ -1,8 +1,11 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import StartCheckout from "../views/StartCheckout.vue";
 import ReviewCart from "../views/ReviewCart.vue";
 import PaymentDetails from "../views/PaymentDetails.vue";
-import DeliveryPayment from "../views/DeliveryPayment.vue";
+import DeliveryDetails from "../views/DeliveryDetails.vue";
+import OrderConfirmed from "../views/OrderConfirmed.vue";
+import ConfirmOrder from "../views/ConfirmOrder.vue";
 
 Vue.use(VueRouter);
 
@@ -11,19 +14,35 @@ const routes = [
     path: "/",
     name: "ReviewCart",
     component: ReviewCart,
+    children: [
+      {
+        path: "/",
+        name: "StartCheckout",
+        component: StartCheckout,
+      },
+      {
+        path: "DeliveryDetails",
+        name: "DeliveryDetails",
+        component: DeliveryDetails,
+      },
+      {
+        path: "PaymentDetails",
+        name: "PaymentDetails",
+        component: PaymentDetails,
+      },
+    ],
+  },
+  {
+    path: "/ConfirmOrder",
+    name: "ConfirmOrder",
+    component: ConfirmOrder,
+  },
+  {
+    path: "/OrderConfirmed",
+    name: "OrderConfirmed",
+    component: OrderConfirmed,
   },
 
-  {
-    path: "/PaymentDetails",
-    name: "PaymentDetails",
-    component: PaymentDetails,
-  },
-
-  {
-    path: "/DeliveryPayment",
-    name: "DeliveryPayment",
-    component: DeliveryPayment,
-  },
   //{
   // path:
   // name:

@@ -24,5 +24,18 @@ $--font-path: "~element-ui/lib/theme-chalk/fonts";
   font-weight: normal;
   src: url("./assets/fonts/OCRAStd.woff") format("woff");
 }
+.removebg {
+  .el-textarea__inner {
+    background: none !important;
+    color: white !important;
+    font-family: Gilroy-Light;
+    letter-spacing: 1px;
+    border-radius: 1px;
+    border-color: rgba(255, 255, 255, 0.25);
+    &:focus {
+      border-color: white;
+    }
+  }
+}
 
 @import "~element-ui/packages/theme-chalk/src/index";

@@ -1,15 +1,12 @@
 <template>
-  <div class="ReviewCart">
+  <div class="ConfirmOrder">
     <el-row :gutter="20 " type="flex">
       <!-- Checkout Bag Begin-->
       <el-col :span="16" class="items">
         <el-card shadow="never" class="items-card">
-          <h1>Checkout</h1>
+          <h1>Confirm Order</h1>
         </el-card>
       </el-col>
-      <transition name="nextStep" mode="out-in">
-        <router-view></router-view>
-      </transition>
     </el-row>
   </div>
 </template>
@@ -18,7 +15,7 @@
 // @ is an alias to /src
 
 export default {
-  name: "ReviewCart",
+  name: "ConfirmOrder",
   components: {},
   data() {
     return {};
@@ -28,7 +25,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" >
 body {
   background: rgb(243, 243, 243);
 }
