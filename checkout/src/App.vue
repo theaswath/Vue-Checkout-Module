@@ -115,7 +115,7 @@ export default {
       ) {
         return false;
       } else if (this.$router.currentRoute.name == "DeliveryDetails") {
-        this.$router.push({ name: "ReviewCart" });
+        this.$router.push({ name: "StartCheckout" });
       } else if (this.$router.currentRoute.name == "PaymentDetails") {
         this.$router.push({ name: "DeliveryDetails" });
       } else if (this.$router.currentRoute.name == "ConfirmOrder") {

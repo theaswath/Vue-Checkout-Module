@@ -95,11 +95,11 @@
                 </el-col>
               </el-row>
               <el-row style=" border:none; text-align:center" type="flex" justify="start">
-                <el-col :span="8">
+                <el-col :span="6">
                   <el-input v-model="$store.address.city" class="removebg" disabled="true"></el-input>
                 </el-col>
 
-                <el-col :span="8">
+                <el-col :span="10">
                   <el-input v-model="$store.address.state" class="removebg" disabled="true"></el-input>
                 </el-col>
 
