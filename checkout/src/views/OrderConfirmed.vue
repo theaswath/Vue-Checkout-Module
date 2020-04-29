@@ -75,7 +75,7 @@
       </el-col>
       <el-col :span="6">
         <el-card
-          style="background: linear-gradient(180deg, rgba(134, 91, 48,1) 0%, rgba(134, 91, 48,1) 100%);"
+          style="background: linear-gradient(180deg, rgba(134, 91, 48,1) 0%, rgba(134, 91, 48,1) 100%); width:25vw"
           shadow="never"
           class="checkout-card"
         >
