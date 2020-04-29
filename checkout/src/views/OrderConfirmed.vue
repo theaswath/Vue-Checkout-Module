@@ -5,6 +5,9 @@
       <el-col :span="16" class="items">
         <el-card shadow="never" class="items-card">
           <h1>Order Confirmed</h1>
+          <p
+            v-show="$store.address.city.length != 0"
+          >{{$store.address.city[Math.floor(Math.random() * $store.address.city.length)]+$store.address.city[Math.floor(Math.random() * $store.address.city.length)]}}</p>
         </el-card>
       </el-col>
     </el-row>

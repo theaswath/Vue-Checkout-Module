@@ -23,15 +23,11 @@ export const globalVars = Vue.observable({
   // Delivery Details Variables Start
   deliveryBtn: false,
   address: {
-    address_line: "TEST ADDRESS",
+    address_line: "",
     city: "",
     state: "",
     country: "",
     pincode: "",
   },
-  delivery_type: "",
-  payment_type: "",
-  awb: "Will Be Generated",
-  delivery_station: "",
   // Delivery Details Variables End
 });

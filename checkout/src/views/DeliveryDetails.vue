@@ -18,7 +18,7 @@
   margin: 0px !important; ">
               <el-form-item
                 class="white-txt"
-                label="Address:"
+                label="Address Line:"
                 style="padding: 0px !important;
   margin: 0px !important; margin-top:20px;"
                 required="true"
@@ -37,73 +37,79 @@
               </el-row>
             </el-form-item>
             <!-- Card Holder Name End -->
-            <!-- Card Number Begin -->
+            <!-- Country Start -->
             <el-row style="padding: 0px !important;
   margin: 0px !important; ">
               <el-form-item
                 class="white-txt"
-                label="Card Number"
+                label="Location (Select nearest if not exact)"
                 style="padding: 0px !important;
   margin: 0px !important; "
                 required="true"
               ></el-form-item>
             </el-row>
             <el-form-item style="margin-bottom:5px">
-              <el-row style=" border:none; text-align:center" type="flex" justify="center">
-                <el-col :span="5">
-                  <el-input
-                    v-model="$store.card_details.card_number.pt1"
-                    maxlength="4"
-                    placeholder="XXXX"
-                    :style="[($store.card_details.card_number.pt1.length == 4) ? {'border-bottom': '1px solid rgba(255, 255, 255, 1) !important', 'transition':'0.3s'} :  {'border-bottom': '1px solid rgba(255, 255, 255, 0.5) !important', 'transition':'0.3s'}]"
-                    style="width: 5em !important; text-align: center;"
-                  ></el-input>
+              <el-row style=" border:none; text-align:center" type="flex" justify="space-between">
+                <el-col :span="10">
+                  <country-select
+                    v-model="$store.address.country"
+                    :country="$store.address.country"
+                    countryName="true"
+                    style="width: 15em !important; text-align: center;"
+                  ></country-select>
                 </el-col>
-                <el-col :span="1"></el-col>
-                <el-col :span="5">
-                  <el-input
-                    v-model="$store.card_details.card_number.pt2"
-                    maxlength="4"
-                    placeholder="XXXX"
-                    :style="[($store.card_details.card_number.pt2.length == 4) ? {'border-bottom': '1px solid rgba(255, 255, 255, 1) !important', 'transition':'0.3s'} :  {'border-bottom': '1px solid rgba(255, 255, 255, 0.5) !important', 'transition':'0.3s'}]"
-                    style="width: 5em !important; text-align: center;"
-                  ></el-input>
+                <el-col :span="2"></el-col>
+                <el-col :span="10">
+                  <region-select
+                    v-model="$store.address.state"
+                    :country="$store.address.country"
+                    :region="$store.address.state"
+                    regionName="true"
+                    countryName="true"
+                    style="width: 15em !important; text-align: center;"
+                  ></region-select>
                 </el-col>
-                <el-col :span="1"></el-col>
-                <el-col :span="5">
-                  <el-input
-                    v-model="$store.card_details.card_number.pt3"
-                    :style="[($store.card_details.card_number.pt3.length == 4) ? {'border-bottom': '1px solid rgba(255, 255, 255, 1) !important', 'transition':'0.3s'} :  {'border-bottom': '1px solid rgba(255, 255, 255, 0.5) !important', 'transition':'0.3s'}]"
-                    maxlength="4"
-                    placeholder="XXXX"
-                    style="width: 5em !important; text-align: center;"
-                  ></el-input>
-                </el-col>
-                <el-col :span="1"></el-col>
-                <el-col :span="5">
-                  <el-input
-                    v-model="$store.card_details.card_number.pt4"
-                    maxlength="4"
-                    placeholder="XXXX"
-                    :style="[($store.card_details.card_number.pt4.length == 4) ? {'border-bottom': '1px solid rgba(255, 255, 255, 1) !important', 'transition':'0.3s'} :  {'border-bottom': '1px solid rgba(255, 255, 255, 0.5) !important', 'transition':'0.3s'}]"
-                    style="width: 5em !important; text-align: center;"
-                  ></el-input>
-                </el-col>
+                <el-col :span="2"></el-col>
               </el-row>
             </el-form-item>
-            <!-- Card Number End -->
 
-            <!-- Card Holder Name End -->
-            <el-row type="flex" justify="end" style="margin:30px 0.5em; transition: 0.5s;">
-              <el-button v-show="!$store.checkoutBtn" disabled>
+            <!-- Country End -->
+            <!-- City Pin start -->
+            <el-form-item style="margin-bottom:5px">
+              <el-row style=" border:none; text-align:left" type="flex" justify="space-between">
+                <el-col :span="10">
+                  <el-input
+                    v-model="$store.address.city"
+                    placeholder="City"
+                    :style="[($store.address.city.length != 0) ? {'border-bottom': '1px solid rgba(255, 255, 255, 1) !important', 'transition':'0.3s'} :  {'border-bottom': '1px solid rgba(255, 255, 255, 0.5) !important', 'transition':'0.3s'}]"
+                  ></el-input>
+                </el-col>
+                <el-col :span="1"></el-col>
+                <el-col :span="8">
+                  <el-input
+                    v-model="$store.address.pincode"
+                    placeholder="Pincode"
+                    :style="[($store.address.pincode.length >2) ? {'border-bottom': '1px solid rgba(255, 255, 255, 1) !important', 'transition':'0.3s'} :  {'border-bottom': '1px solid rgba(255, 255, 255, 0.5) !important', 'transition':'0.3s'}]"
+                  ></el-input>
+                </el-col>
+                <el-col :span="3"></el-col>
+              </el-row>
+            </el-form-item>
+            <!-- City Pin End -->
+
+            <!-- Button -->
+            <el-row type="flex" justify="end" style="margin:15em 0.5em; transition: 0.5s;">
+              <router-link to="/PaymentDetails">
+                <el-button :disabled="!deliveryChecker()">
+                  Proceed To Payment
+                  <i class="el-icon-right"></i>
+                </el-button>
+              </router-link>
+              <!-- 
+              <el-button>
                 Complete Checkout
                 <i class="el-icon-right"></i>
-              </el-button>
-
-              <el-button v-show="$store.checkoutBtn">
-                Complete Checkout
-                <i class="el-icon-right"></i>
-              </el-button>
+              </el-button>-->
             </el-row>
           </el-form>
         </el-card>
@@ -124,49 +130,22 @@ export default {
   },
 
   methods: {
-    getCardType(card) {
-      if (card == undefined) {
-        this.$store.cardValid = true;
-        return require("../assets/img/misc.svg");
-      } else if (card == 3) {
-        this.$store.cardValid = true;
-        return require("../assets/img/amex.svg");
-      } else if (card == 4) {
-        this.$store.cardValid = true;
-        return require("../assets/img/visa.svg");
-      } else if (card == 5) {
-        this.$store.cardValid = true;
-        return require("../assets/img/mastercard.svg");
-      } else if (card == 6) {
-        this.$store.cardValid = true;
-        return require("../assets/img/rupay.svg"); //change to discover if outside India,
-      } else {
-        this.$store.cardValid = false;
-        return require("../assets/img/misc.svg"); //spacer using blank svg
-      }
-    },
-
-    cardPosition() {
+    deliveryChecker() {
+      console.log(this.$store.address.country);
+      console.log(this.$store.address.state);
       if (
-        this.$store.card_details.card_number.pt1.length == 4 &&
-        this.$store.card_details.card_number.pt2.length == 4 &&
-        this.$store.card_details.card_number.pt3.length == 4 &&
-        this.$store.card_details.card_number.pt4.length == 4 &&
-        this.$store.card_details.name.length > 2 &&
-        this.$store.card_details.mm.length == 2 &&
-        this.$store.card_details.yy.length == 2 &&
-        this.$store.card_details.mm > 0 &&
-        this.$store.card_details.mm < 13 &&
-        this.$store.card_details.yy > 0 &&
-        this.$store.card_details.cvv.length == 3 &&
-        this.$store.cardValid == true
+        this.$store.address.address_line.length > 10 &&
+        this.$store.address.city.length != 0 &&
+        this.$store.address.pincode.length > 2 &&
+        this.$store.address.country != "" &&
+        this.$store.address.state != ""
       ) {
-        this.$store.cardProceed = true;
-        this.$store.checkoutBtn = true;
+        this.$store.deliveryBtn = true;
+
         return true;
       } else {
-        this.$store.cardProceed = false;
-        this.$store.checkoutBtn = false;
+        this.$store.deliveryBtn = false;
+
         return false;
       }
     }
