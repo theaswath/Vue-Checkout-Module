@@ -73,7 +73,6 @@ export default {
 
   methods: {
     activeStepFn() {
-      console.log(this.$router.currentRoute.name);
       if (
         this.$router.currentRoute.name == "ReviewCart" ||
         this.$router.currentRoute.name == "StartCheckout"
@@ -101,7 +100,8 @@ export default {
       console.log("BTN State: " + this.$store.backBtn_disable);
       if (
         this.$router.currentRoute.name == "ReviewCart" ||
-        this.$router.currentRoute.name == "StartCheckout"
+        this.$router.currentRoute.name == "StartCheckout" ||
+        this.$router.currentRoute.name == "OrderConfirmed"
       ) {
         this.$store.backBtn_disable = false;
       } else {

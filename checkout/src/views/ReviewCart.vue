@@ -22,7 +22,7 @@
                     <el-col :span="3">
                       <h4>€89.00</h4>
                     </el-col>
-                    <el-col :span="1">
+                    <el-col :span="3">
                       <h4>X 1</h4>
                     </el-col>
                   </el-row>
@@ -32,27 +32,27 @@
                 </el-col>
               </el-row>
             </el-card>
-            <!-- Wacom -->
+            <!-- Notebook -->
             <el-card shadow="never" style="margin: 10px 0px; width:85%;">
               <el-row>
                 <el-col :span="3">
-                  <img height="50px" src="../assets/img/wacom.png" alt />
+                  <img height="50px" src="../assets/img/notebook.jpg" alt />
                 </el-col>
                 <el-col :span="17">
                   <el-row>
-                    <h3>Wacom Intuos S Bluetooth</h3>
+                    <h3>Moleskine Classic Notebook, Hard Cover, Large (5" x 8.25") Ruled/Lined, Black, 240 Pages</h3>
                   </el-row>
                   <el-row style="padding: 5px 0px">
                     <el-col :span="3">
-                      <h4>€89.00</h4>
+                      <h4>€18.82</h4>
                     </el-col>
-                    <el-col :span="1">
-                      <h4>X 1</h4>
+                    <el-col :span="3">
+                      <h4>X 4</h4>
                     </el-col>
                   </el-row>
                 </el-col>
                 <el-col :span="3" style="text-align:center">
-                  <h2>€89.00</h2>
+                  <h2>€75.28</h2>
                 </el-col>
               </el-row>
             </el-card>
@@ -60,13 +60,13 @@
             <hr style="width:85%; margin-top:20px:" />
             <el-card shadow="never" style="margin: 10px 0px; width:85%; border:none;">
               <el-row>
-                <el-col :span="20">
+                <el-col :span="19">
                   <el-row style="padding: 5px 0px">
                     <h2>Total</h2>
                   </el-row>
                 </el-col>
-                <el-col :span="3">
-                  <h1>€89.00</h1>
+                <el-col :span="5">
+                  <h1>€164.28</h1>
                 </el-col>
               </el-row>
             </el-card>

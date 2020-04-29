@@ -105,11 +105,6 @@
                   <i class="el-icon-right"></i>
                 </el-button>
               </router-link>
-              <!-- 
-              <el-button>
-                Complete Checkout
-                <i class="el-icon-right"></i>
-              </el-button>-->
             </el-row>
           </el-form>
         </el-card>

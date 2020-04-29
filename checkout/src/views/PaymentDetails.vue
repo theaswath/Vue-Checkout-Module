@@ -92,7 +92,7 @@
           class="checkout-card"
         >
           <h2>Card Details</h2>
-          <div style="height:14em"></div>
+          <div style="height:24vh"></div>
           <el-form :model="$store.card_details">
             <!-- Card Number Begin -->
             <el-row style="padding: 0px !important;
@@ -241,11 +241,12 @@
                 Complete Checkout
                 <i class="el-icon-right"></i>
               </el-button>
-
-              <el-button v-show="$store.checkoutBtn">
-                Complete Checkout
-                <i class="el-icon-right"></i>
-              </el-button>
+              <router-link to="/ConfirmOrder">
+                <el-button v-show="$store.checkoutBtn">
+                  Review Order
+                  <i class="el-icon-right"></i>
+                </el-button>
+              </router-link>
             </el-row>
           </el-form>
         </el-card>
