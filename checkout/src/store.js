@@ -1,6 +1,8 @@
 import Vue from "vue";
 
 export const globalVars = Vue.observable({
+  backBtn_disable: true,
+
   // Payment Details Variables Start
   checkoutBtn: false,
 
